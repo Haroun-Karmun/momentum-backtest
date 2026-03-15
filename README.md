@@ -52,4 +52,4 @@ No external data API needed. Prices are generated internally for reproducibility
 
 Python, pandas, numpy, matplotlib.
 
-Built by Haroun, bachelor business engineering, UCLouvain Saint-Louis Brussels.
+Built by Haroun, bachelor business engineering, UCLouvain
