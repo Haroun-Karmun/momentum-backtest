@@ -1,22 +1,15 @@
-# momentum-backtest
+momentum-backtest :
 
-Backtest of a momentum strategy on S&P 500 and CAC 40, built as a personal project to explore quantitative finance concepts I've been studying alongside my degree.
+Backtest of a momentum strategy on S&P 500 and CAC 40. I built this as a personal project while studying quantitative finance alongside my degree wanted to see if I could take the stats and maths I was learning and turn them into something that actually runs on market data.
+I kept the strategy simple on purpose. The goal was to understand each piece properly.
 
-The strategy is simple on purpose. I wanted to understand each part properly before adding complexity.
+How it works
 
-## How it works
+The signal is a dual moving average crossover. I go long when the 20-day MA crosses above the 60-day MA and stay flat otherwise. To avoid betting the same amount regardless of market conditions, I scale position sizes using volatility targeting: when markets are turbulent the position shrinks automatically, when they're calm it increases. I also apply a 5 bps transaction cost on every position change and shift the signal by one day to avoid lookahead bias.
 
-Signal: dual moving average crossover (MA 20 / MA 60). Long when the short MA is above the long MA, flat otherwise.
+Results:
+Tested on 5 years of simulated data generated with GBM, with a crisis period injected around year 2.5 to stress-test the strategy.
 
-Position sizing: volatility targeting. The position is scaled so the strategy targets ~10% annual vol, which reduces exposure automatically when markets get turbulent.
-
-Transaction costs: 5 bps per trade, applied on every position change.
-
-The signal is shifted by one day before computing returns to avoid lookahead bias.
-
-## Results
-
-Backtest on 5 years of simulated data (GBM with a crisis period injected around year 2.5).
 
 ```
                            S&P 500     CAC 40
